@@ -12,14 +12,16 @@
     "chat-bot",
     "artificial",
     "intelligence",
-    "discord chatbot",
-    "AI",
-    "yapayzeka",
+    "discord chatbot"
   ],
   "author": "bucksh0t",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/CsYBot/smart-chatbot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CsYBot/smart-chatbot.git"
   },
   "homepage": "https://github.com/CsYBot/smart-chatbot/issues#readme",
   "dependencies": {
