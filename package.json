@@ -1,0 +1,26 @@
+{
+  "name": "smart-chatbot",
+  "version": "0.0.3",
+  "description": "Intelligent Chat Bot Api",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [
+    "smart",
+    "chatbot",
+    "chat-bot",
+    "artificial",
+    "intelligence",
+    "discord chatbot"
+  ],
+  "author": "bucksh0t",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CsYBot/smart-chatbot/issues"
+  },
+  "homepage": "https://github.com/CsYBot/smart-chatbot/issues#readme",
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+}
