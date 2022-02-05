@@ -1,6 +1,6 @@
 {
   "name": "smart-chatbot",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Intelligent Chat Bot Api",
   "main": "main.js",
   "scripts": {
@@ -12,7 +12,9 @@
     "chat-bot",
     "artificial",
     "intelligence",
-    "discord chatbot"
+    "discord chatbot",
+    "AI",
+    "yapayzeka",
   ],
   "author": "bucksh0t",
   "license": "ISC",
