@@ -17,8 +17,9 @@ client.on("message", async(message) => {
        let soru = args.slice(0).join(' ');
 
        let reply = await chatclient.chat({ 
-           message: soru, 
-           user: message.author.id 
+          message: soru, 
+          user: message.author.id,
+          language: "tr" // (tr, en)
         });
      message.channel.send(reply);
   }

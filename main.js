@@ -1,48 +1,8 @@
-const axios = require("axios");
-const baseURL = "https://api.csycraft.xyz/chatbot";
-const version = require('./package.json').version;
-const packagename = require('./package.json').name;
+const x = require("./mains.js");
+const xs = new x.Client("sample-api", "Bot Name");
 
-class Client {
-    constructor(secret, botname, logging = false) {
-
-    if(logging == true)
-    console.log(`[${packagename}] Enabling..`);
-        
-        this.chat = function(json) {
-            return new Promise(async(resolve, reject) => {
-
-                if(!json.message || typeof json.message !== "string") reject("No message was provided");
-                if(!json.user || typeof json.user !== "number") json.user = 1;
-
-                axios.get(`${baseURL}?message=${encodeURIComponent(json.message)}&user=${encodeURIComponent(json.user)}&botname=${encodeURIComponent(botname)}`, {
-                    headers: {
-                        'Authorization': `${secret}`,
-                        'Version': `${version}`
-                    }
-                }).then(x => {
-                    if(x && x.data && x.data.code && x.data.code == 200 && x.data.message) {
-                        resolve(x.data.message);
-                    } else {
-                        if (x && x.data && x.data.code && x.data.code == 203) {
-                            resolve("Please Enter Valid Secret Code.");
-                        } else if (x && x.data && x.data.code && x.data.code == 205 && x.data.message) {
-                            console.error(x.data.message);
-                            resolve(x.data.message);
-                        } else {
-                            reject("No Api message was provided");
-                        }
-                    }
-                }).catch(err => reject("Api Connection Problem"));
-            })
-        }
-        
-    if(logging == true)
-    console.log(`[${packagename}] Enabled!`);
-    }
-}
-
-module.exports = {
-    Client: Client,
-    version: version
-}
+   xs.chat({
+    message: "Hello",
+    user: "1",
+    language: "tr"
+  }).then(xx => console.log)
