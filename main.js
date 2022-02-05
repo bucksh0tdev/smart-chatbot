@@ -1,5 +1,5 @@
 const axios = require("axios");
-const baseURL = "https://api.csycraft.xyz/chatbot";
+const baseURL = "https://api.csycraft.xyz/chatbot?";
 const version = require('./package.json').version;
 const packagename = require('./package.json').name;
 
@@ -16,7 +16,14 @@ class Client {
                 if(!json.user || typeof json.user !== "number") json.user = 1;
                 if(!json.language || typeof json.language !== "string" || (json.language != "tr" && json.language != "en")) json.language = "en";
 
-                axios.get(`${baseURL}?message=${encodeURIComponent(json.message)}&user=${encodeURIComponent(json.user)}&botname=${encodeURIComponent(botname)}&lang=${encodeURIComponent(json.language)}`, {
+                let getparams = {
+                	message: json.message,
+                	user: json.user,
+                	language: json.language
+                };
+                let params = new URLSearchParams(getparams).toString();
+
+                axios.get(String(baseURL) + String(params), {
                     headers: {
                         'Authorization': `${secret}`,
                         'Version': `${version}`
