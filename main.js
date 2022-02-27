@@ -1,5 +1,5 @@
 const axios = require("axios");
-const baseURL = "https://api.csycraft.xyz/chatbot?";
+const baseURL = "https://api.csycraft.xyz";
 const version = require('./package.json').version;
 const packagename = require('./package.json').name;
 
@@ -16,17 +16,11 @@ class Client {
                 if(!json.user || typeof json.user !== "number") json.user = 1;
                 if(!json.language || typeof json.language !== "string" || (json.language != "tr" && json.language != "en")) json.language = "en";
 
-                let getparams = {
-                	message: json.message,
-                	user: json.user,
-                	language: json.language
-                };
-                let params = new URLSearchParams(getparams).toString();
-
-                axios.get(String(baseURL) + String(params), {
+                axios.get(`${baseURL}/chatbot?message=${encodeURIComponent(json.message)}&user=${encodeURIComponent(json.user)}&language=${encodeURIComponent(json.language)}&botname=${encodeURIComponent(botname)}`, {
                     headers: {
                         'Authorization': `${secret}`,
-                        'Version': `${version}`
+                        'Version': `${version}`,
+                        'using': "npm"
                     }
                 }).then(x => {
                     if(x && x.data && x.data.code && x.data.code == 200 && x.data.message) {
