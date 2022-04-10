@@ -7,13 +7,51 @@
 **Javascript:**
 ```js
 const chatbot = require("smart-chatbot");
-const chatclient = new chatbot.Client("SECRET KEY", "BOT NAME");
+const chatclient = new chatbot.Client({ secretkey: "SECRET KEY", botname: "BOT NAME", ownername: "OWNER NAME" });
 
 chatclient.chat({
   message: "Hello",
   user: "SECRET USER ID",
   language: "tr" // (tr, en)
 }).then(answer => console.log(answer));
+```
+
+**Aoi.js & Dbd.js:**
+```js
+bot.command({
+  name: "$alwaysExecute",
+  code: `$djsEval[
+    const chatbot = require("smart-chatbot")
+    const chatclient = new chatbot.Client({ secretkey: "SECRET KEY", botname: "BOT NAME", ownername: "OWNER NAME" });
+    let question = message.content.split(" ").slice(1).join(" ");
+    if(!question || String(question) == String([])) {
+      message.channel.send("❌ Please Message ❌");
+    } else {
+      chatclient.chat({
+        message: question,
+        user: message.author.id,
+        language: "tr" // (tr, en)
+      }).then(x => message.channel.send(x)).catch(err => message.channel.send("ERR API Problem!"));
+    }]
+    $onlyIf[$mentioned[1]==$clientID;]
+  `
+});
+```
+
+**Bdfd API (BDSCRPT 2):**
+```txt
+$nomention
+$botTyping
+$try
+$httpAddHeader[Authorization;SECRET_KEY]
+$httpAddHeader[Version;0.0.9]
+$httpAddHeader[using;bdfd]
+$httpGet[https://api.csycraft.xyz/chatbot?user=$authorID&language=tr&botname=CsYBot&message=$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$message;ı;i];ö;o];ğ;g];ü;u];ç;c];ş;s]]
+$httpResult[message]
+$catch
+Üzgünüm cevap veremedim.
+$endtry
+$argsCheck[>1;Please Enter Message]
 ```
 
 **What is SECRET KEY?**
