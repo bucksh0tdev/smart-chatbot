@@ -1,11 +1,10 @@
 {
   "name": "smart-chatbot",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Intelligent Chat Bot Api",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js",
-    "rs": "rm -rf ./node_modules package-lock.json"
+    "start": "node main.js"
   },
   "keywords": [
     "smart",
@@ -13,7 +12,10 @@
     "chat-bot",
     "artificial",
     "intelligence",
-    "discord chatbot"
+    "discord chatbot",
+    "bdfd",
+    "yapayzeka",
+    "aoi.js"
   ],
   "author": "bucksh0t",
   "license": "Apache-2.0",
