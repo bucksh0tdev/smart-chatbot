@@ -1,0 +1,13 @@
+$nomention
+$botTyping
+$try
+$httpAddHeader[Authorization;SECRET_KEY]
+$httpAddHeader[Version;0.0.9]
+$httpAddHeader[using;bdfd]
+$httpGet[https://api.csycraft.xyz/chatbot?user=$authorID&language=tr&botname=CsYBot&message=$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$message;ı;i];ö;o];ğ;g];ü;u];ç;c];ş;s]]
+$httpResult[message]
+$catch
+Üzgünüm cevap veremedim.
+$endtry
+$argsCheck[>1;Lütfen Mesaj girin]
+**Note: Select BdScript 2**
