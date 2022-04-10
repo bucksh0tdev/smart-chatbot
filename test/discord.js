@@ -7,7 +7,7 @@ const client = new Discord.Client({
   ]
 });
 const chatbot = require("smart-chatbot"); 
-const chatclient = new chatbot.Client("SECRET KEY", "BOT NAME");
+const chatclient = new chatbot.Client({ secretkey: "SECRET KEY", botname: "BOT NAME", ownername: "OWNER NAME" });
 
 client.on("message", async(message) => {
   if(!message || !message.content || !message.author || message.author.bot) return;
