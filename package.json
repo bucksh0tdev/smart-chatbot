@@ -1,6 +1,6 @@
 {
   "name": "smart-chatbot",
-  "version": "0.1.0",
+  "version": "1.4.0",
   "description": "Intelligent Chat Bot Api",
   "main": "main.js",
   "scripts": {
@@ -29,5 +29,8 @@
   "homepage": "https://github.com/CsYBot/smart-chatbot/issues#readme",
   "dependencies": {
     "axios": "^0.24.0"
+  },
+  "engines": {
+    "node": "x.v16"
   }
 }
