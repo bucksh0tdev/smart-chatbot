@@ -7,12 +7,20 @@
 **Javascript:**
 ```js
 const chatbot = require("smart-chatbot");
-const chatclient = new chatbot.Client({ secretkey: "SECRET KEY", botname: "BOT NAME", ownername: "OWNER NAME" });
+const chatclient = new chatbot.Client({ 
+  secretkey: "SECRET KEY",
+  botname: "BOT NAME",
+  ownername: "OWNER NAME",
+  gender: "female", // (female/male)
+  birth: "https://csycraft.com",
+  location: "https://csybot.csycraft.com",
+  email: "brain@csycraft.com"
+});
 
 chatclient.chat({
   message: "Hello",
   user: "SECRET USER ID",
-  language: "tr" // (tr, en)
+  language: "tr" // (tr, en, pt) for more dm me
 }).then(answer => console.log(answer));
 ```
 
@@ -22,7 +30,15 @@ bot.command({
   name: "$alwaysExecute",
   code: `$djsEval[
     const chatbot = require("smart-chatbot")
-    const chatclient = new chatbot.Client({ secretkey: "SECRET KEY", botname: "BOT NAME", ownername: "OWNER NAME" });
+    const chatclient = new chatbot.Client({ 
+      secretkey: "SECRET KEY",
+      botname: "BOT NAME",
+      ownername: "OWNER NAME",
+      gender: "female", // (female/male)
+      birth: "https://csycraft.com",
+      location: "https://csybot.csycraft.com",
+      email: "brain@csycraft.com"
+    });
     let question = message.content.split(" ").slice(1).join(" ");
     if(!question || String(question) == String([])) {
       message.channel.send("❌ Please Message ❌");
@@ -30,7 +46,7 @@ bot.command({
       chatclient.chat({
         message: question,
         user: message.author.id,
-        language: "tr" // (tr, en)
+        language: "tr" // (tr, en, pt) for more dm me
       }).then(x => message.channel.send(x)).catch(err => message.channel.send("ERR API Problem!"));
     }]
     $onlyIf[$mentioned[1]==$clientID;]
@@ -44,12 +60,12 @@ $nomention
 $botTyping
 $try
 $httpAddHeader[Authorization;SECRET_KEY]
-$httpAddHeader[Version;0.0.9]
+$httpAddHeader[Version;1.3.0]
 $httpAddHeader[using;bdfd]
 $httpGet[https://api.csycraft.xyz/chatbot?user=$authorID&language=tr&botname=CsYBot&message=$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$message;ı;i];ö;o];ğ;g];ü;u];ç;c];ş;s]]
 $httpResult[message]
 $catch
-Üzgünüm cevap veremedim.
+Sorry I couldn't answer.
 $endtry
 $argsCheck[>1;Please Enter Message]
 ```
